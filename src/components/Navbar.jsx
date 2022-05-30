@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 const Navbar = React.memo(() => {
   
-  const checkModeIcon = () => {
+  //Check initial dark mode setting
+  const checkInitailMode = () => {
     if (
       localStorage.getItem("color-theme") === "dark" ||
       (!("color-theme" in localStorage) &&
@@ -13,19 +14,20 @@ const Navbar = React.memo(() => {
     return false;
   };
 
+  //Track dark mode
+  const [darkMode, setDarkMode] = useState(checkInitailMode());
 
-  const [darkMode, setDarkMode] = useState(checkModeIcon());
-
+  //Toggle Mode
   const toggleMode = () => {
-    //Toggle Mode
-    setDarkMode((prevMode) => !prevMode);
 
     // if set via local storage previously
     if (localStorage.getItem("color-theme")) {
       if (localStorage.getItem("color-theme") === "light") {
+        setDarkMode(true);
         document.documentElement.classList.add("dark");
         localStorage.setItem("color-theme", "dark");
       } else {
+        setDarkMode(false);
         document.documentElement.classList.remove("dark");
         localStorage.setItem("color-theme", "light");
       }
@@ -33,9 +35,11 @@ const Navbar = React.memo(() => {
       // if NOT set via local storage previously
     } else {
       if (document.documentElement.classList.contains("dark")) {
+        setDarkMode(false);
         document.documentElement.classList.remove("dark");
         localStorage.setItem("color-theme", "light");
       } else {
+        setDarkMode(true);
         document.documentElement.classList.add("dark");
         localStorage.setItem("color-theme", "dark");
       }
