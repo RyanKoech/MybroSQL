@@ -67,7 +67,18 @@ const ColumnCard = React.memo(() => {
       <h3 className="inline font-semibold text-lg sm:text-xl text-gray-800 dark:text-slate-300 mb-3">
         Date Details
       </h3>
-      <div className="flex flex-col pt-3">
+      <div className="flex flex-col sm:flex-row sm:items-end pt-3">
+        <div className="mb-3 sm:mb-0 sm:mr-10">
+          <select
+            className="form-select inline-block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-gray-50 bg-clip-padding bg-no-repeat px-3 py-1.5 text-sm font-normal text-gray-900 transition ease-in-out focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            aria-label="Default select example"
+          >
+            <option defaultValue>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
         <div>
           <select
             className="form-select inline-block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-gray-50 bg-clip-padding bg-no-repeat px-3 py-1.5 text-sm font-normal text-gray-900 transition ease-in-out focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
