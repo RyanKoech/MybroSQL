@@ -67,7 +67,7 @@ const ColumnCard = React.memo(() => {
       <h3 className="inline font-semibold text-lg sm:text-xl text-gray-800 dark:text-slate-300 mb-3">
         Date Details
       </h3>
-      <div className="flex flex-col sm:flex-row sm:items-end pt-3">
+      <div className="flex flex-col sm:flex-row sm:items-end pt-3 mb-5">
         <div className="mb-4 sm:mb-0 sm:mr-10">
           <label
             htmlFor="countries"
@@ -104,6 +104,38 @@ const ColumnCard = React.memo(() => {
             <option value="DE">Germany</option>
           </select>
         </div>
+      </div>
+      <div>
+        <div className="mb-2 flex flex-row items-end">
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-gray-900 dark:text-gray-400 mr-2"
+          >
+            Your message
+          </label>
+          <span className="block" title="Testing Title">
+            <svg
+              class="w-4 h-4 text-gray-600 dark:text-slate-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+          </span>
+        </div>
+        <textarea
+          id="message"
+          rows="4"
+          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Your message..."
+        ></textarea>
       </div>
     </div>
   );
