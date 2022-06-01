@@ -3,12 +3,32 @@ import React from "react";
 const ColumnCard = React.memo(() => {
   return (
     <div className="block p-6 min-w-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <h3 className="inline font-semibold text-lg sm:text-xl text-gray-800 dark:text-slate-300 mb-3">
-        Column Details
-      </h3>
-      <span className="text-base sm:text-lg text-gray-800 dark:text-slate-300">
-        &nbsp;:&nbsp;Column Name
-      </span>
+      <div className="flex flex-row items-end justify-between">
+        <div>
+          <h3 className="inline font-semibold text-lg sm:text-xl text-gray-800 dark:text-slate-300 mb-3">
+            Column Details
+          </h3>
+          <span className="text-base sm:text-lg text-gray-800 dark:text-slate-300">
+            &nbsp;:&nbsp;Column Name
+          </span>
+        </div>
+        <button className="block p-1 text-gray-500 sm:text-gray-300 dark:text-slate-400 sm:dark:text-slate-600 hover:text-gray-600 dark:hover:text-slate-300">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+        </button>
+      </div>
       <div className="flex flex-col sm:flex-row sm:items-end my-4 max-w-[800px]">
         {/* FOREIGN KEY TOGGLE*/}
         <div className="w-full">
@@ -107,7 +127,10 @@ const ColumnCard = React.memo(() => {
           >
             Custom Data
           </label>
-          <span className="block" title="Enter comma ( , ) separated data to be used for your foreign keys or custom data. NOTE: Datatype and Data domain will be ignored if set">
+          <span
+            className="block"
+            title="Enter comma ( , ) separated data to be used for your foreign keys or custom data. NOTE: Datatype and Data domain will be ignored if set"
+          >
             <svg
               class="w-4 h-4 text-gray-600 dark:text-slate-400"
               fill="none"
