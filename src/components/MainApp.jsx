@@ -28,18 +28,26 @@ const MainApp = React.memo(() => {
           Table Columns
         </h2>
         <ColumnCard />
-        <div className="flex flex-row-reverse mt-5">
-          <div className="relative">
+        <div className="flex flex-col sm:flex-row-reverse mt-5 items-end sm:justify-between">
+          <div className="relative w-max mb-10 sm:mb-0">
             <input
               type="text"
               className="z-0 h-10 w-64 pr-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block p-2.5 ml-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Column Name"
             />
             <div className="absolute top-0 right-0">
-              <button className="h-10 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+              <button className="h-10 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg rounded-l-none text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                 Add Column
               </button>
             </div>
+          </div>
+          <div className="w-full sm:w-max">
+            <button
+              type="button"
+              class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mx-auto dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-full sm:w-max"
+            >
+              Default
+            </button>
           </div>
         </div>
       </div>
