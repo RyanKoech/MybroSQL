@@ -68,26 +68,40 @@ const ColumnCard = React.memo(() => {
         Date Details
       </h3>
       <div className="flex flex-col sm:flex-row sm:items-end pt-3">
-        <div className="mb-3 sm:mb-0 sm:mr-10">
-          <select
-            className="form-select inline-block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-gray-50 bg-clip-padding bg-no-repeat px-3 py-1.5 text-sm font-normal text-gray-900 transition ease-in-out focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            aria-label="Default select example"
+        <div className="mb-4 sm:mb-0 sm:mr-10">
+          <label
+            htmlFor="countries"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
           >
-            <option defaultValue>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            Select an option
+          </label>
+          <select
+            id="countries"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option defaultValue="">Choose a country</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
           </select>
         </div>
         <div>
-          <select
-            className="form-select inline-block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-gray-50 bg-clip-padding bg-no-repeat px-3 py-1.5 text-sm font-normal text-gray-900 transition ease-in-out focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-            aria-label="Default select example"
+          <label
+            htmlFor="countries"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
           >
-            <option defaultValue>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            Select an option
+          </label>
+          <select
+            id="countries"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option defaultValue="">Choose a country</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
           </select>
         </div>
       </div>
