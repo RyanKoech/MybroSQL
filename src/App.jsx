@@ -9,7 +9,7 @@ import MainApp from "./components/MainApp";
 function App() {
 
   return (
-    <div className="bg-white dark:bg-slate-900">
+    <div className="bg-white dark:bg-slate-900 pb-10">
       <div className="container min-h-screen mx-auto w-full md:pt-4">
         <Navbar/>
         <MainApp/>
