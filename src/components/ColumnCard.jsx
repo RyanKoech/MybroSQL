@@ -73,17 +73,14 @@ const ColumnCard = React.memo(() => {
             htmlFor="countries"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
           >
-            Select an option
+            Datatype
           </label>
           <select
             id="countries"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option defaultValue="">Choose a country</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
+            <option defaultValue="">Choose a datatype</option>
+            <option value="TEXT">Text</option>
           </select>
         </div>
         <div>
@@ -91,17 +88,14 @@ const ColumnCard = React.memo(() => {
             htmlFor="countries"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
           >
-            Select an option
+            Data Domain
           </label>
           <select
             id="countries"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option defaultValue="">Choose a country</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
+            <option defaultValue="">Choose a data domain</option>
+            <option value="NAMES">Names</option>
           </select>
         </div>
       </div>
@@ -111,9 +105,9 @@ const ColumnCard = React.memo(() => {
             htmlFor="message"
             className="block text-sm font-medium text-gray-900 dark:text-gray-400 mr-2"
           >
-            Your message
+            Custom Data
           </label>
-          <span className="block" title="Testing Title">
+          <span className="block" title="Enter comma ( , ) separated data to be used for your foreign keys or custom data. NOTE: Datatype and Data domain will be ignored if set">
             <svg
               class="w-4 h-4 text-gray-600 dark:text-slate-400"
               fill="none"
@@ -134,7 +128,7 @@ const ColumnCard = React.memo(() => {
           id="message"
           rows="4"
           className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Your message..."
+          placeholder="Your custom data..."
         ></textarea>
       </div>
     </div>
