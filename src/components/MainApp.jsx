@@ -40,7 +40,7 @@ const MainApp = React.memo(() => {
         />
       </div>
       <div>
-        <h2 className="text-xl sm:text-2xl text-gray-800 font-semibold dark:text-slate-300 mb-3">
+        <h2 className="text-xl sm:text-2xl text-gray-800 font-semibold dark:text-slate-300 mb-3 sm:mb-5">
           Table Columns
         </h2>
         {colNamesList.length > 0 ? (
@@ -48,11 +48,11 @@ const MainApp = React.memo(() => {
             <ColumnCard key={colName} colName={colName} />
           ))
         ) : (
-          <div className="mx-auto text-center text-bold text-2xl text-slate-500 bg-slate-50 dark:bg-slate-800 p-2 rounded-lg">
+          <div className="mx-auto text-center text-bold text-2xl text-slate-500 bg-slate-50 dark:bg-slate-800 p-2 rounded-lg mb-3">
             No Columns Entered
           </div>
         )}
-        <div className="flex flex-col sm:flex-row-reverse mt-5 items-end sm:justify-between">
+        <div className="flex flex-col sm:flex-row-reverse items-end sm:justify-between pt-5">
           <div className="relative w-max mb-10 sm:mb-0">
             <input
               type="text"

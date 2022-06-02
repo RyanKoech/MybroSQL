@@ -2,7 +2,7 @@ import React from "react";
 
 const ColumnCard = React.memo(({colName}) => {
   return (
-    <div className="block p-6 min-w-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="block p-6 min-w-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mb-5 sm:mb-7">
       <div className="flex flex-row items-end justify-between">
         <div>
           <h3 className="inline font-semibold text-lg sm:text-xl text-gray-800 dark:text-slate-300 mb-3">
