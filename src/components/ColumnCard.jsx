@@ -1,6 +1,6 @@
 import React from "react";
 
-const ColumnCard = React.memo(() => {
+const ColumnCard = React.memo(({colName}) => {
   return (
     <div className="block p-6 min-w-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-row items-end justify-between">
@@ -9,7 +9,7 @@ const ColumnCard = React.memo(() => {
             Column Details
           </h3>
           <span className="text-base sm:text-lg text-gray-800 dark:text-slate-300">
-            &nbsp;:&nbsp;Column Name
+            &nbsp;:&nbsp;{colName}
           </span>
         </div>
         <button className="block p-1 text-gray-500 sm:text-gray-300 dark:text-slate-400 sm:dark:text-slate-600 hover:text-gray-600 dark:hover:text-slate-300">
