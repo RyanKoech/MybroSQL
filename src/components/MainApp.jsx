@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 
 //Components Imports
 import ColumnCard from "./ColumnCard";
 
 const MainApp = React.memo(() => {
+
+  const [enteredCol, setEnteredCol] = useState('');
+  const [colNamesList, setColNamesList] = useState([]);
+
+  const addNewColName = useCallback((e) => {
+    e.preventDefault()
+
+    if(!enteredCol.trim().length || colNamesList.includes(enteredCol) ) return;
+
+    setColNamesList((prevColList) => [...prevColList, enteredCol])
+  }, [colNamesList, enteredCol])
+
   return (
     <div className="px-2 pt-3 md:pt-20">
       <h1 className="text-3xl sm:text-4xl font-semibold dark:text-slate-100 mb-3">
@@ -28,6 +40,7 @@ const MainApp = React.memo(() => {
         <h2 className="text-xl sm:text-2xl text-gray-800 font-semibold dark:text-slate-300 mb-3">
           Table Columns
         </h2>
+        {colNamesList.map(() => <ColumnCard key={Math.random()}/>)}
         <ColumnCard />
         <div className="flex flex-col sm:flex-row-reverse mt-5 items-end sm:justify-between">
           <div className="relative w-max mb-10 sm:mb-0">
@@ -35,9 +48,13 @@ const MainApp = React.memo(() => {
               type="text"
               className="z-0 h-10 w-64 pr-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block p-2.5 ml-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Column Name"
+              onChange={(e) => {setEnteredCol(e.target.value)}}
             />
             <div className="absolute top-0 right-0">
-              <button className="h-10 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg rounded-l-none text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+              <button 
+                className="h-10 w-32 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg rounded-l-none text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                onClick={addNewColName}
+              >
                 Add Column
               </button>
             </div>
