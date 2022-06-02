@@ -40,7 +40,7 @@ const MainApp = React.memo(() => {
         <h2 className="text-xl sm:text-2xl text-gray-800 font-semibold dark:text-slate-300 mb-3">
           Table Columns
         </h2>
-        {/* {(colNamesList.length > 0)? : colNamesList.map((colName) => <ColumnCard key={colName} colName={colName}/>)} */}
+        {colNamesList.map((colName) => <ColumnCard key={colName} colName={colName}/>)}
         <div className="flex flex-col sm:flex-row-reverse mt-5 items-end sm:justify-between">
           <div className="relative w-max mb-10 sm:mb-0">
             <input
