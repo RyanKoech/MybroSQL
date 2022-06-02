@@ -14,7 +14,7 @@ const MainApp = React.memo(() => {
     if(!enteredCol.trim().length || colNamesList.includes(enteredCol) ) return;
 
     setColNamesList((prevColList) => [...prevColList, enteredCol])
-  }, [colNamesList, enteredCol])
+  }, [colNamesList, enteredCol]);
 
   return (
     <div className="px-2 pt-3 md:pt-20">
@@ -40,14 +40,14 @@ const MainApp = React.memo(() => {
         <h2 className="text-xl sm:text-2xl text-gray-800 font-semibold dark:text-slate-300 mb-3">
           Table Columns
         </h2>
-        {colNamesList.map((colName) => <ColumnCard key={colName} colName={colName}/>)}
-        <ColumnCard />
+        {/* {(colNamesList.length > 0)? : colNamesList.map((colName) => <ColumnCard key={colName} colName={colName}/>)} */}
         <div className="flex flex-col sm:flex-row-reverse mt-5 items-end sm:justify-between">
           <div className="relative w-max mb-10 sm:mb-0">
             <input
               type="text"
               className="z-0 h-10 w-64 pr-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block p-2.5 ml-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Column Name"
+              value={enteredCol}
               onChange={(e) => {setEnteredCol(e.target.value)}}
             />
             <div className="absolute top-0 right-0">
