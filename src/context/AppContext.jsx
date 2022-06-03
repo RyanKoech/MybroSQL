@@ -5,8 +5,10 @@ export const AppContext = React.createContext();
 const AppContextProvider = ({children}) => {
 
   return (
-    <AppContext value={{}}>
+    <AppContext.Provider value={{}}>
       {children}
-    </AppContext>
+    </AppContext.Provider>
   );
 }
+
+export default AppContextProvider;
