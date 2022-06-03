@@ -1,24 +1,14 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useContext, useState } from "react";
 
 //Components Imports
 import ColumnCard from "./ColumnCard";
 
+//App Context
+import { AppContext } from "../context/AppContext";
+
 const MainApp = React.memo(() => {
-  const [enteredCol, setEnteredCol] = useState("");
-  const [colNamesList, setColNamesList] = useState([]);
 
-  const addNewColName = useCallback(
-    (e) => {
-      e.preventDefault();
-
-      if (!enteredCol.trim().length || colNamesList.includes(enteredCol))
-        return;
-
-      setColNamesList((prevColList) => [...prevColList, enteredCol]);
-      setEnteredCol('');
-    },
-    [colNamesList, enteredCol]
-  );
+  const {colNamesList, enteredCol, setEnteredCol, addNewColName} = useContext(AppContext);
 
   return (
     <div className="px-2 pt-3 md:pt-20">
