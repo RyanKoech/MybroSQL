@@ -15,6 +15,7 @@ const MainApp = React.memo(() => {
         return;
 
       setColNamesList((prevColList) => [...prevColList, enteredCol]);
+      setEnteredCol('');
     },
     [colNamesList, enteredCol]
   );
