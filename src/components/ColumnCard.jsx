@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+
+//Component Imports
+import { AppContext } from "../context/AppContext"; 
+
+//Object Imports
+import ColumnObject from "../model/ColumnObject";
+
+//Constants Imports
+import { DATA_TYPE, DATA_DOMAINS } from "../model/Constants";
 
 const ColumnCard = React.memo(({colName}) => {
+
+  const {updateColObjList} = useContext(AppContext)
+
+  //Information for Generating Column Data
+  const [isForeignKey, setIsForeignKey] = useState(false);
+  const [isUnique, setIsUnique] = useState(false);
+  const [size, setSize] = useState(0);
+  const [datatype, setDatatype] = useState(DATA_TYPE.TEXT);
+  const [dataDomain, setDataDomain] = useState(DATA_DOMAINS[DATA_TYPE.TEXT][0]);
+  const [customData, setCustomData] = useState('');
+
+  // useEffect(
+  //   updateColObjList(
+  //     ColumnObject(colName, isForeignKey, isUnique, size, datatype, dataDomain, customData)
+  //   ),
+  //   [colName, isForeignKey, isUnique, size, datatype, dataDomain, customData]
+  // );
+
   return (
     <div className="block p-6 min-w-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mb-5 sm:mb-7">
       <div className="flex flex-row items-end justify-between">
@@ -41,6 +68,13 @@ const ColumnCard = React.memo(({colName}) => {
               value=""
               id={colName + "_foreignKey"}
               className="sr-only peer"
+              onClick={e => {
+                const _isForeignKey = e.target.checked
+                updateColObjList(
+                      ColumnObject(colName, _isForeignKey, isUnique, size, datatype, dataDomain, customData)
+                    )
+                setIsForeignKey(_isForeignKey)
+              }}
             />
             <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
             <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -59,6 +93,13 @@ const ColumnCard = React.memo(({colName}) => {
               value=""
               id={colName + "_uniqueKey"}
               className="sr-only peer"
+              onClick={e => {
+                const _isUnique = e.target.checked
+                updateColObjList(
+                  ColumnObject(colName, isForeignKey, _isUnique, size, datatype, dataDomain, customData)
+                )
+                setIsUnique(_isUnique)
+              }}
             />
             <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
             <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -81,6 +122,13 @@ const ColumnCard = React.memo(({colName}) => {
             min="0"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-9/12 p-2.5 ml-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required
+            onChange={e => {
+              const _size = e.target.value
+              updateColObjList(
+                ColumnObject(colName, isForeignKey, isUnique, _size, datatype, dataDomain, customData)
+              )
+              setSize(_size)
+            }}
           />
         </div>
       </div>
@@ -98,6 +146,13 @@ const ColumnCard = React.memo(({colName}) => {
           <select
             id="countries"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            onChange={e => {
+              const _datatype = e.target.value
+              updateColObjList(
+                ColumnObject(colName, isForeignKey, isUnique, size, _datatype, dataDomain, customData)
+              )
+              setDatatype(_datatype)
+            }}
           >
             <option defaultValue="">Choose a datatype</option>
             <option value="TEXT">Text</option>
@@ -113,6 +168,13 @@ const ColumnCard = React.memo(({colName}) => {
           <select
             id="countries"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            onChange={e => {
+              const _dataDomain = e.target.value
+              updateColObjList(
+                ColumnObject(colName, isForeignKey, isUnique, size, datatype, _dataDomain, customData)
+              )
+              setDataDomain(_dataDomain)
+            }}
           >
             <option defaultValue="">Choose a data domain</option>
             <option value="NAMES">Names</option>
@@ -152,6 +214,13 @@ const ColumnCard = React.memo(({colName}) => {
           rows="4"
           className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Your custom data..."
+          onChange={e => {
+            const _customData = e.target.value
+            updateColObjList(
+              ColumnObject(colName, isForeignKey, isUnique, size, datatype, dataDomain, _customData)
+            )
+            setCustomData(_customData)
+          }}
         ></textarea>
       </div>
     </div>
