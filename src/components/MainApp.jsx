@@ -8,7 +8,7 @@ import { AppContext } from "../context/AppContext";
 
 const MainApp = React.memo(() => {
 
-  const {colNamesList, enteredCol, setEnteredCol, addNewColName} = useContext(AppContext);
+  const {colNamesList, enteredCol, setEnteredCol, addNewColName, setGeneralInfo} = useContext(AppContext);
 
   return (
     <div className="px-2 pt-3 md:pt-20">
@@ -28,6 +28,32 @@ const MainApp = React.memo(() => {
           className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full sm:w-3/12 min-w-[300px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
           placeholder="Enter SQL table name"
           required
+          onChange={(e) => {
+            setGeneralInfo(prevObj => { 
+              return {...prevObj, tableName: e.target.value}
+            })}}
+        />
+      </div>
+      <div className="mb-6">
+        <label
+          htmlFor="tableName"
+          className="block mb-2 text-m font-semibold text-gray-900 dark:text-gray-300"
+        >
+          Number or Rows
+        </label>
+        <input
+          type="number"
+          step="1"
+          min="1"
+          max="100"
+          id="tableName"
+          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full sm:w-3/12 min-w-[300px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+          placeholder="Enter number of rows needed"
+          required
+          onChange={(e) => {
+            setGeneralInfo(prevObj => { 
+              return {...prevObj, rowCount: e.target.value}
+            })}}
         />
       </div>
       <div>

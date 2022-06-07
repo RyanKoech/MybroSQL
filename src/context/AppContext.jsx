@@ -9,7 +9,7 @@ const AppContextProvider = ({children}) => {
   const [enteredCol, setEnteredCol] = useState("");
   const [colNamesList, setColNamesList] = useState([]);
   const [colObjList, setColObjList] = useState([]);
-  
+  const [generalInfo, setGeneralInfo] = useState({});
 
   const addNewColName = useCallback(
     (e) => {
@@ -46,7 +46,7 @@ const AppContextProvider = ({children}) => {
   };
 
   return (
-    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, updateColObjList}}>
+    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, updateColObjList, setGeneralInfo}}>
       {children}
     </AppContext.Provider>
   );
