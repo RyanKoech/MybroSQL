@@ -21,12 +21,30 @@ const ColumnCard = React.memo(({colName}) => {
   const [dataDomain, setDataDomain] = useState(DATA_DOMAINS[DATA_TYPE.TEXT][0]);
   const [customData, setCustomData] = useState('');
 
-  // useEffect(
-  //   updateColObjList(
-  //     ColumnObject(colName, isForeignKey, isUnique, size, datatype, dataDomain, customData)
-  //   ),
-  //   [colName, isForeignKey, isUnique, size, datatype, dataDomain, customData]
-  // );
+  const getDataTypeOptions = () => {
+
+    let optionsList = [];
+
+    for(const data_type in DATA_TYPE){
+      const option = <option key={DATA_TYPE[data_type]} value={DATA_TYPE[data_type]}>{DATA_TYPE[data_type]}</option>
+      optionsList.push(option)
+    }
+
+    return optionsList;
+  }
+
+  const getDataDomainOptions = () => {
+    
+    let optionsList = [];
+
+    DATA_DOMAINS[datatype].forEach((dataDomain) => {
+      const option = <option key={dataDomain} value={dataDomain}>{dataDomain}</option>
+      optionsList.push(option)
+    })
+
+    return optionsList;
+
+  }
 
   return (
     <div className="block p-6 min-w-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mb-5 sm:mb-7">
@@ -148,14 +166,16 @@ const ColumnCard = React.memo(({colName}) => {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             onChange={e => {
               const _datatype = e.target.value
+              const _dataDomain = DATA_DOMAINS[_datatype][0]
               updateColObjList(
-                ColumnObject(colName, isForeignKey, isUnique, size, _datatype, dataDomain, customData)
+                ColumnObject(colName, isForeignKey, isUnique, size, _datatype, _dataDomain, customData)
               )
+              setDataDomain(_dataDomain)
               setDatatype(_datatype)
             }}
           >
             <option defaultValue="">Choose a datatype</option>
-            <option value="TEXT">Text</option>
+            {getDataTypeOptions()}
           </select>
         </div>
         <div>
@@ -176,8 +196,7 @@ const ColumnCard = React.memo(({colName}) => {
               setDataDomain(_dataDomain)
             }}
           >
-            <option defaultValue="">Choose a data domain</option>
-            <option value="NAMES">Names</option>
+            {getDataDomainOptions()}
           </select>
         </div>
       </div>
