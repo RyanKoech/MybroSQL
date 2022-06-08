@@ -45,8 +45,28 @@ const AppContextProvider = ({children}) => {
     });
   };
 
+  const generateData = () => {
+
+    const data = {}
+    const rowCount = 10
+
+    // colObjList.forEach((colObj) => {
+
+    //   data[colObj.name] = []
+
+    //   if(colObj.customData.trim().length > 0){
+        
+    //   }
+    // })
+    console.log("General infromation: ")
+    console.log(generalInfo);
+    console.log("Column Info: ")
+    console.log(colObjList);
+  }
+
+
   return (
-    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, updateColObjList, setGeneralInfo}}>
+    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, updateColObjList, setGeneralInfo, generateData}}>
       {children}
     </AppContext.Provider>
   );
