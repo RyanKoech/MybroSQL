@@ -1,3 +1,4 @@
+//React Imports
 import React, { useState } from "react";
 
 const Navbar = React.memo(() => {

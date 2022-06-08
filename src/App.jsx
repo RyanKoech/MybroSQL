@@ -1,5 +1,7 @@
-import { useState } from "react";
-import logo from "./logo.svg";
+//React Imports
+import React from "react";
+
+//Style Imports
 import "./App.css";
 
 //Components Imports
