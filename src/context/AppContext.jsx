@@ -1,6 +1,9 @@
 //React Imports
 import React, {useState, useCallback} from "react";
 
+//Generators Imports
+import { getDataFromCustomData } from "../generators/custom-data/custom-data";
+
 //Object Imports
 import ColumnObject from "../model/ColumnObject";
 
@@ -54,18 +57,21 @@ const AppContextProvider = ({children}) => {
     const data = {}
     const rowCount = 10
 
-    // colObjList.forEach((colObj) => {
+    colObjList.forEach((colObj) => {
 
-    //   data[colObj.name] = []
-
-    //   if(colObj.customData.trim().length > 0){
+      if(colObj.customData.trim().length > 0){
+        const dirtyArray = colObj.customData.split(',');
+        const cleanArray = dirtyArray.map((dirtyString) => dirtyString.trim())
         
-    //   }
-    // })
+        data[colObj.name] = getDataFromCustomData(cleanArray, rowCount, colObj.isUnique)
+      }
+    })
     console.log("General infromation: ")
     console.log(generalInfo);
     console.log("Column Info: ")
     console.log(colObjList);
+    console.log("Data: ")
+    console.log(data)
   }
 
 
