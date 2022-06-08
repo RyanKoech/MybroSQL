@@ -21,6 +21,7 @@ const ColumnCard = React.memo(({colName}) => {
   const [dataDomain, setDataDomain] = useState(DATA_DOMAINS[DATA_TYPE.TEXT][0]);
   const [customData, setCustomData] = useState('');
 
+  //Loops through DATA_TYPE constant to create options elements list for a select input
   const getDataTypeOptions = () => {
 
     let optionsList = [];
@@ -33,6 +34,7 @@ const ColumnCard = React.memo(({colName}) => {
     return optionsList;
   }
 
+  //Loops through DATA_DOMAIN[<data_type>] constant to create options elements list for a select input
   const getDataDomainOptions = () => {
     
     let optionsList = [];
@@ -166,6 +168,7 @@ const ColumnCard = React.memo(({colName}) => {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             onChange={e => {
               const _datatype = e.target.value
+              //Update data domain since change in datatype implies change in data domain
               const _dataDomain = DATA_DOMAINS[_datatype][0]
               updateColObjList(
                 ColumnObject(colName, isForeignKey, isUnique, size, _datatype, _dataDomain, customData)

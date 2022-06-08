@@ -4,6 +4,7 @@ export const DATA_TYPE = {
   VARCHAR : "VARCHAR"
 }
 
+//Maps datatype to specific data domains
 export const DATA_DOMAINS = {
     [DATA_TYPE.TEXT]: [
       "NAME",

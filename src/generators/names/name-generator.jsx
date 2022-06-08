@@ -1,5 +1,6 @@
 import { names } from "./names";
 
+//Used to generate a list of full names
 export const generateFullNames = (rowCount) => {
 
   const fullNameList = []

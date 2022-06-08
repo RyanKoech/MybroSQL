@@ -11,6 +11,7 @@ const AppContextProvider = ({children}) => {
   const [colObjList, setColObjList] = useState([]);
   const [generalInfo, setGeneralInfo] = useState({});
 
+  //Keeps track of columns added in the UI
   const addNewColName = useCallback(
     (e) => {
       e.preventDefault();
@@ -27,6 +28,7 @@ const AppContextProvider = ({children}) => {
     [colNamesList, enteredCol]
   );
 
+  //Keeps track of details of columns add to the UI
   const updateColObjList = (newObj) => {
 
     setColObjList( prevColObjlist => {
@@ -45,6 +47,7 @@ const AppContextProvider = ({children}) => {
     });
   };
 
+  //Called to begin the process of data generation
   const generateData = () => {
 
     const data = {}

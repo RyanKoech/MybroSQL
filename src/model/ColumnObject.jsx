@@ -1,3 +1,4 @@
+//Defines the structure of column details data structure
 const ColumnObject = (_name, _isForeignKey, _isUnique, _size, _datatype, _dataDomain, _customData) => {
   const name = _name
   let isForeignKey = _isForeignKey
