@@ -7,11 +7,14 @@ export const DATA_TYPE = {
 export const DATA_DOMAINS = {
     [DATA_TYPE.TEXT]: [
       "NAME",
-      "EMAIL",
       "WORD"
     ],
     [DATA_TYPE.INT] : [
-      "RANGE",
+      "RANDOM NUMBER",
       "PHONE"
+    ],
+    [DATA_TYPE.VARCHAR] : [
+      "ADDRESS",
+      "EMAIL"
     ]
 }
