@@ -24,7 +24,7 @@ const AppContextProvider = ({children}) => {
         return;
 
       setColNamesList((prevColList) => [...prevColList, enteredCol]);
-      setColObjList((prevColObjlist) => [...prevColObjlist, ColumnObject(enteredCol, false, false, 120, "TEXT", "NAME", "")])
+      setColObjList((prevColObjList) => [...prevColObjList, ColumnObject(enteredCol, false, false, 120, "TEXT", "NAME", "")])
 
       console.log(colObjList);
       setEnteredCol('');
@@ -35,9 +35,9 @@ const AppContextProvider = ({children}) => {
   //Keeps track of details of columns add to the UI
   const updateColObjList = (newObj) => {
 
-    setColObjList( prevColObjlist => {
+    setColObjList( prevColObjList => {
 
-        const newColObjList = prevColObjlist.map(obj => {
+        const newColObjList = prevColObjList.map(obj => {
 
           if(obj.name === newObj.name){
             return {...obj, ...newObj};
@@ -66,7 +66,7 @@ const AppContextProvider = ({children}) => {
         data[colObj.name] = getDataFromCustomData(cleanArray, rowCount, colObj.isUnique)
       }
     })
-    console.log("General infromation: ")
+    console.log("General information: ")
     console.log(generalInfo);
     console.log("Column Info: ")
     console.log(colObjList);
