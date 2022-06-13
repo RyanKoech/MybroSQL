@@ -1,13 +1,13 @@
 //Data Domain Constants
 //FOR TEXT
-const NAME = "NAME";
-const WORD = "WORD";
+export const NAME = "NAME";
+export const WORD = "WORD";
 //FOR INT
-const RANDOM_NUMBER = "RANDOM NUMBER";
-const PHONE = "PHONE";
+export const RANDOM_NUMBER = "RANDOM NUMBER";
+export const PHONE = "PHONE";
 //FOR VARCHAR
-const ADDRESS = "ADDRESS";
-const EMAIL = "EMAIL";
+export const ADDRESS = "ADDRESS";
+export const EMAIL = "EMAIL";
 
 
 export const DATA_TYPE = {
