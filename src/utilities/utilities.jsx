@@ -11,3 +11,7 @@ export const shuffleArray = array => {
         
     return array;
  }
+
+ export const reverseString = string => {
+    return string.split("").reverse().join(""); 
+ }
