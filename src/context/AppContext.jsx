@@ -2,10 +2,14 @@
 import React, {useState, useCallback} from "react";
 
 //Generators Imports
-import { getDataFromCustomData } from "../generators/custom-data/custom-data";
+import { getDataFromCustomData } from "../generators/custom-data/custom-data-generator";
+import { generateFullNames } from "../generators/names/name-generator";
 
 //Object Imports
 import ColumnObject from "../model/ColumnObject";
+
+//Constants Imports
+import { NAME, WORD, RANDOM_NUMBER, PHONE, ADDRESS, EMAIL } from "../model/Constants";
 
 export const AppContext = React.createContext();
 
@@ -59,11 +63,22 @@ const AppContextProvider = ({children}) => {
 
     colObjList.forEach((colObj) => {
 
-      if(colObj.customData.trim().length > 0){
+      if(colObj.customData.trim().length > 0){ //Use the data provided for generating foreign key field data
         const dirtyArray = colObj.customData.split(',');
         const cleanArray = dirtyArray.map((dirtyString) => dirtyString.trim())
         
         data[colObj.name] = getDataFromCustomData(cleanArray, rowCount, colObj.isUnique)
+      }else {
+        switch(colObj.dataDomain){
+          case NAME: {
+            data[colObj.name] = generateFullNames(rowCount, colObj.isUnique)
+            break;
+          }
+          default : {
+            data[colObj.name] = ["Unknown DataDomain"]
+            break;
+          }
+        }
       }
     })
     console.log("General information: ")
