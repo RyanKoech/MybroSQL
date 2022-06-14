@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-const generateEntity = {
+const entityGenerator = {
 
   company : (rowCount, isUnique) => {
 
@@ -36,3 +36,5 @@ const generateEntity = {
     return companyList;
   }
 }
+
+export default entityGenerator;
