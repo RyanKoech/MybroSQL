@@ -2,7 +2,8 @@ import { names } from "../names/names";
 
 const mailServersList = [
   "gmail",
-  "yahoo"
+  "yahoo",
+  "email"
 ]
 
 const domainList = [
@@ -11,11 +12,10 @@ const domainList = [
   "tech"
 ]
 
-
-const generateEmail = (rowCount, isUnique) => {
+export const generateEmail = (rowCount, isUnique) => {
   const emailList = [];
 
-  // Generates Unique Random Number
+  // Generates Unique Email
   if(isUnique){
 
     for(let i = 0; i < rowCount; i++){
@@ -26,14 +26,26 @@ const generateEmail = (rowCount, isUnique) => {
         const lastName = names[Math.floor(Math.random() * names.length)];
         const mailServers = mailServersList[Math.floor(Math.random() * mailServersList.length)];
         const domain = domainList[Math.floor(Math.random() * domainList.length)];
+        email = firstName + lastName + "@" +mailServers + "." + domain;
 
-
-        //Keeps generating until a unique random number is obtained
+        //Keeps generating until a unique email is obtained
+        regen = emailList.includes(email);
       }
+      emailList.push(email);
     }
 
-  //Generates None Unique Random Number
+  //Generates None Unique Email
   }else {
+
+    for(let i = 0; i < rowCount; i++){
+      const firstName = names[Math.floor(Math.random() * names.length)];
+      const lastName = names[Math.floor(Math.random() * names.length)];
+      const mailServers = mailServersList[Math.floor(Math.random() * mailServersList.length)];
+      const domain = domainList[Math.floor(Math.random() * domainList.length)];
+      const email = firstName + lastName + "@" +mailServers + "." + domain;
+
+      emailList.push(email);
+    }
 
   }
 
