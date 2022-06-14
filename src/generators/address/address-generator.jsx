@@ -17,6 +17,20 @@ const addressGenerator = {
     }
   
     return addressList;
+  }, 
+
+  city: (rowCount) => {
+
+    const cityList = [];
+  
+    for(let i = 0; i < rowCount; i++){
+  
+      const city = faker.address.cityName();
+  
+      cityList.push(city);
+    }
+  
+    return cityList;
   }
 }
 
