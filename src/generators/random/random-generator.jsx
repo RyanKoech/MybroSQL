@@ -96,7 +96,7 @@ const randomGenerator = {
     return letterList;
   },
 
-  sentence : (rowCount, size) => {
+  sentence : (rowCount, isUnique) => {
 
     const sentenceList = [];
 
@@ -162,6 +162,20 @@ const randomGenerator = {
     }
 
     return paragraphsList;
+  },
+
+  gender : (rowCount) => {
+    const genders = ["Male", "Female"];
+    const genderList = [];
+
+    for (let i = 0; i < rowCount; i++){
+
+      const gender = genders[Math.floor(Math.random()*genders.length)];
+      genderList.push(gender);
+
+    }
+
+    return genderList;
   }
 }
 
