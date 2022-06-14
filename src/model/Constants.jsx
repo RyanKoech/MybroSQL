@@ -18,6 +18,7 @@ export const ADDRESS = "ADDRESS";
 export const EMAIL = "EMAIL";
 export const URL = 'URL';
 export const POSTAL_CODE = "POSTAL CODE";
+export const PASSWORD = "PASSWORD";
 //FOR DATE-TIME
 export const DATE = "DATE";
 export const TIME = "TIME";
