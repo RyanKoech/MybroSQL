@@ -128,6 +128,40 @@ const randomGenerator = {
     }
 
     return sentenceList;
+  },
+
+  paragraphs : (rowCount, isUnique) => {
+
+    const paragraphsList = [];
+
+    if(isUnique){
+
+      for(let i = 0; i < rowCount; i++){
+
+        let paragraphs = "";
+        let regen = true;
+        while(regen){
+
+          paragraphs = faker.random.paragraphs();
+          //Ensures generated paragraphs is unique
+          regen = paragraphsList.includes(paragraphs);
+
+        }
+
+        paragraphsList.push(paragraphs)
+  
+      }
+    } else {
+      
+      for(let i = 0; i < rowCount; i++){
+
+        const paragraphs = faker.random.paragraphs();
+        paragraphsList.push(paragraphs)
+  
+      }
+    }
+
+    return paragraphsList;
   }
 }
 
