@@ -1,7 +1,5 @@
 //React Imports
 import React, {useState, useCallback} from "react";
-import { createPortal } from "react-dom";
-
 //Generators Imports
 import { getDataFromCustomData } from "../generators/custom-data/custom-data-generator";
 import { generateFullNames } from "../generators/names/name-generator";
