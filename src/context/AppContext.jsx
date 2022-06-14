@@ -1,12 +1,12 @@
 //React Imports
 import React, {useState, useCallback} from "react";
 //Generators Imports
-import { getDataFromCustomData } from "../generators/custom-data/custom-data-generator";
-import { generateFullNames } from "../generators/names/name-generator";
-import { generateRandomNumber } from "../generators/random-number/random-number-generator";
-import { generatePhoneNumber } from "../generators/phone-number/phone-number-generator";
-import { generateEmail } from "../generators/email/email-generator";
-import { generateAddress } from "../generators/address/address-generator";
+import addressGenerator from "../generators/address/address-generator";
+import internetGenerator from "../generators/internet/internet-generators";
+import phoneGenerator from "../generators/phone/phone-generator";
+import personGenerator from "../generators/person/person-generator";
+import customDataGenerator from "../generators/custom-data/custom-data-generator";
+import randomGenerator from "../generators/random/random-generator";
 
 //Object Imports
 import ColumnObject from "../model/ColumnObject";
@@ -70,27 +70,27 @@ const AppContextProvider = ({children}) => {
         const dirtyArray = colObj.customData.split(',');
         const cleanArray = dirtyArray.map((dirtyString) => dirtyString.trim())
         
-        data[colObj.name] = getDataFromCustomData(cleanArray, rowCount, colObj.isUnique)
+        data[colObj.name] = customDataGenerator.customData(cleanArray, rowCount, colObj.isUnique)
       }else {
         switch(colObj.dataDomain){
           case NAME: {
-            data[colObj.name] = generateFullNames(rowCount, colObj.isUnique);
+            data[colObj.name] = personGenerator.name(rowCount, colObj.isUnique);
             break;
           }
           case RANDOM_NUMBER: {
-            data[colObj.name] = generateRandomNumber(rowCount, parseInt(colObj.size), colObj.isUnique);
+            data[colObj.name] = randomGenerator.number(rowCount, parseInt(colObj.size), colObj.isUnique);
             break;
           }
           case PHONE: {
-            data[colObj.name] = generatePhoneNumber(rowCount);
+            data[colObj.name] = phoneGenerator.phone(rowCount);
             break;
           }
           case EMAIL:{
-            data[colObj.name] = generateEmail(rowCount, colObj.isUnique);
+            data[colObj.name] = internetGenerator.email(rowCount, colObj.isUnique);
             break;
           }
           case ADDRESS:{
-            data[colObj.name] = generateAddress(rowCount);
+            data[colObj.name] = addressGenerator.address(rowCount);
             break;
           }
           default : {
