@@ -76,7 +76,7 @@ const randomGenerator = {
 
           letter = faker.random.alpha();
           //Ensures generated letter is unique
-          regen = wordList.includes(letter);
+          regen = letterList.includes(letter);
 
         }
 
@@ -87,13 +87,47 @@ const randomGenerator = {
       
       for(let i = 0; i < rowCount; i++){
 
-        const letter = faker.random.word();
+        const letter = faker.random.alpha();
         letterList.push(letter)
   
       }
     }
 
     return letterList;
+  },
+
+  sentence : (rowCount, size) => {
+
+    const sentenceList = [];
+
+    if(isUnique){
+
+      for(let i = 0; i < rowCount; i++){
+
+        let sentence = "";
+        let regen = true;
+        while(regen){
+
+          sentence = faker.random.sentence();
+          //Ensures generated sentence is unique
+          regen = sentenceList.includes(sentence);
+
+        }
+
+        sentenceList.push(sentence)
+  
+      }
+    } else {
+      
+      for(let i = 0; i < rowCount; i++){
+
+        const sentence = faker.random.sentence();
+        sentenceList.push(sentence)
+  
+      }
+    }
+
+    return sentenceList;
   }
 }
 
