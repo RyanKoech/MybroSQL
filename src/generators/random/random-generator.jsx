@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker";
+
 const randomGenerator = {
   number : (rowCount, size, isUnique) => {
     const randomNumberList = []
@@ -24,7 +26,41 @@ const randomGenerator = {
     }
   
     return randomNumberList;
-  }  
+  },
+  
+  word: (rowCount, isUnique) => {
+    
+    const wordList = [];
+
+    if(isUnique){
+
+      for(let i = 0; i < rowCount; i++){
+
+        let word = "";
+        let regen = true;
+        while(regen){
+
+          word = faker.random.word();
+          //Ensures generated word is unique
+          regen = wordList.includes(word);
+
+        }
+
+        wordList.push(word)
+  
+      }
+    } else {
+      
+      for(let i = 0; i < rowCount; i++){
+
+        const word = faker.random.word();
+        wordList.push(word)
+  
+      }
+    }
+
+    return wordList;
+  }
 }
 
 export default randomGenerator;
