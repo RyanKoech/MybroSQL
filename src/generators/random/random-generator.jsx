@@ -27,7 +27,7 @@ const randomGenerator = {
   
     return randomNumberList;
   },
-  
+
   word: (rowCount, isUnique) => {
     
     const wordList = [];
@@ -60,6 +60,40 @@ const randomGenerator = {
     }
 
     return wordList;
+  },
+
+  letter: (rowCount, isUnique) =>  {
+    
+    const letterList = [];
+
+    if(isUnique && rowCount < 26 ){ //Avoid infinite loop in while statement
+
+      for(let i = 0; i < rowCount; i++){
+
+        let letter = "";
+        let regen = true;
+        while(regen){
+
+          letter = faker.random.alpha();
+          //Ensures generated letter is unique
+          regen = wordList.includes(letter);
+
+        }
+
+        letterList.push(letter)
+  
+      }
+    } else {
+      
+      for(let i = 0; i < rowCount; i++){
+
+        const letter = faker.random.word();
+        letterList.push(letter)
+  
+      }
+    }
+
+    return letterList;
   }
 }
 
