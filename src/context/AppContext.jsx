@@ -1,9 +1,13 @@
 //React Imports
 import React, {useState, useCallback} from "react";
+import { createPortal } from "react-dom";
 
 //Generators Imports
 import { getDataFromCustomData } from "../generators/custom-data/custom-data-generator";
 import { generateFullNames } from "../generators/names/name-generator";
+import { generateRandomNumber } from "../generators/random-number/random-number-generator";
+import { generatePhoneNumber } from "../generators/phone-number/phone-number-generator";
+import { generateEmail } from "../generators/email/email-generator";
 
 //Object Imports
 import ColumnObject from "../model/ColumnObject";
@@ -71,7 +75,19 @@ const AppContextProvider = ({children}) => {
       }else {
         switch(colObj.dataDomain){
           case NAME: {
-            data[colObj.name] = generateFullNames(rowCount, colObj.isUnique)
+            data[colObj.name] = generateFullNames(rowCount, colObj.isUnique);
+            break;
+          }
+          case RANDOM_NUMBER: {
+            data[colObj.name] = generateRandomNumber(rowCount, parseInt(colObj.size), colObj.isUnique);
+            break;
+          }
+          case PHONE: {
+            data[colObj.name] = generatePhoneNumber(rowCount);
+            break;
+          }
+          case EMAIL:{
+            data[colObj.name] = generateEmail(rowCount, colObj.isUnique);
             break;
           }
           default : {
