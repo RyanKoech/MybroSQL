@@ -8,6 +8,7 @@ import { generateFullNames } from "../generators/names/name-generator";
 import { generateRandomNumber } from "../generators/random-number/random-number-generator";
 import { generatePhoneNumber } from "../generators/phone-number/phone-number-generator";
 import { generateEmail } from "../generators/email/email-generator";
+import { generateAddress } from "../generators/address/address-generator";
 
 //Object Imports
 import ColumnObject from "../model/ColumnObject";
@@ -88,6 +89,10 @@ const AppContextProvider = ({children}) => {
           }
           case EMAIL:{
             data[colObj.name] = generateEmail(rowCount, colObj.isUnique);
+            break;
+          }
+          case ADDRESS:{
+            data[colObj.name] = generateAddress(rowCount);
             break;
           }
           default : {
