@@ -56,6 +56,20 @@ const dateTimeGenerator = {
     }
 
     return yearList;
+  },
+
+  timestamp: () => {
+    const timeStampList = [];
+
+    for(let i = 0; i < rowCount; i++){
+
+      const timestamp = Math.floor(Math.random() * 1893456000);
+      timeStampList.push(timestamp);
+
+    }
+
+    return timeStampList;
+
   }
 
 
