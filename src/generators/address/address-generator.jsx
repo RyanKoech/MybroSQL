@@ -31,6 +31,20 @@ const addressGenerator = {
     }
   
     return cityList;
+  },
+
+  country: (rowCount) => {
+
+    const countryList = [];
+  
+    for(let i = 0; i < rowCount; i++){
+  
+      const country = faker.address.country();
+  
+      countryList.push(country);
+    }
+  
+    return countryList;
   }
 }
 
