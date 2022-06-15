@@ -45,6 +45,20 @@ const addressGenerator = {
     }
   
     return countryList;
+  },
+
+  state: (rowCount) => {
+
+    const stateList = [];
+  
+    for(let i = 0; i < rowCount; i++){
+  
+      const state = faker.address.state();
+  
+      stateList.push(state);
+    }
+  
+    return stateList;
   }
 }
 
