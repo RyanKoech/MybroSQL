@@ -29,6 +29,21 @@ const dateTimeGenerator = {
     return timeList;
   },
 
+  dateTime : () => {
+    const dateTimeList = [];
+
+    for(let i = 0; i < rowCount; i++){
+
+      const dateTime = faker.date.between('1900-01-01T00:00:00.000Z', '2030-01-01T00:00:00.000Z')
+        .slice(0, 19)
+        .replace("T", " ");
+      dateTimeList.push(dateTime);
+
+    }
+
+    return dateTimeList;
+  },
+
   year: () => {
     const yearList = [];
 
