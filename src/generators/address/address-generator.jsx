@@ -59,6 +59,41 @@ const addressGenerator = {
     }
   
     return stateList;
+  },
+
+  
+  postalCode: (rowCount, isUnique) => {
+
+    const postalCodeList = [];
+
+    if(isUnique){
+
+      for(let i = 0; i < rowCount; i++){
+
+        let postalCode = "";
+        let regen = true;
+
+        while(regen){
+
+          postalCode = faker.address.zipCode();
+          regen = postalCodeList.includes(postalCode);
+
+        }
+
+        postalCodeList.push(postalCode);
+
+      }
+    }else{
+
+      for(let i = 0; i < rowCount; i++){
+  
+        const postalCode = faker.address.zipCode();
+        postalCodeList.push(postalCode);
+
+      }
+    }
+  
+    return postalCodeList;
   }
 }
 
