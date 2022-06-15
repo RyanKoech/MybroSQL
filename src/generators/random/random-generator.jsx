@@ -1,6 +1,19 @@
 import { faker } from "@faker-js/faker";
 
 const randomGenerator = {
+  password : (rowCount) => {
+    const passwordList = [];
+
+    for(let i = 0; i < rowCount; i++){
+
+      const password = faker.random.alphaNumeric(6);
+      passwordList.push(password);
+
+    }
+
+    return passwordList;
+  },
+
   number : (rowCount, size, isUnique) => {
     const randomNumberList = []
   
