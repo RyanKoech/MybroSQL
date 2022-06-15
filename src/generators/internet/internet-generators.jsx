@@ -20,7 +20,39 @@ const internetGenerator = {
     }
 
     return emailList;
-  }
+  },
+
+  url : (rowCount, isUnique) => {
+    const urlList = [];
+
+    if(isUnique){
+      
+      for(let i = 0; i < rowCount; i++){
+        let url = "";
+        let regen = true;
+  
+        while(regen){
+          url = faker.internet.url();
+  
+          //Makes sure a unique url is obtained
+          regen = urlList.includes(url);
+        }
+  
+        urlList.push(url);
+
+      }
+    }else {
+
+      for(let i = 0; i < rowCount; i++){
+
+        const url = faker.internet.url();
+        urlList.push(url);
+
+      }
+    }
+
+    return urlList;
+  },
 }
 
 export default internetGenerator;
