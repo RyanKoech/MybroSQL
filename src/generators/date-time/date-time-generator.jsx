@@ -6,8 +6,8 @@ const dateTimeGenerator = {
 
     for(let i = 0; i < rowCount; i++){
 
-      const dateTime = faker.date.between('1900-01-01T00:00:00.000Z', '2030-01-01T00:00:00.000Z');
-      const date = dateTime.slice(0 , 10);
+      const dateTime = faker.date.between('1980-01-01T00:00:00.000Z', '2030-01-01T00:00:00.000Z');
+      const date = dateTime.toISOString().split('T')[0];
       dateList.push(date);
 
     }
@@ -21,7 +21,7 @@ const dateTimeGenerator = {
     for(let  i = 0; i < rowCount; i++){
 
       const dateTime = faker.date.between('1900-01-01T00:00:00.000Z', '1900-01-02T00:00:00.000Z');
-      const time = dateTime.slice(11, 8);
+      const time = dateTime.toISOString().slice(11, 23);
       timeList.push(time);
 
     }
@@ -29,13 +29,14 @@ const dateTimeGenerator = {
     return timeList;
   },
 
-  dateTime : () => {
+  dateTime : (rowCount) => {
     const dateTimeList = [];
 
     for(let i = 0; i < rowCount; i++){
 
       const dateTime = faker.date.between('1900-01-01T00:00:00.000Z', '2030-01-01T00:00:00.000Z')
-        .slice(0, 19)
+        .toISOString()
+        .slice(0, 23)
         .replace("T", " ");
       dateTimeList.push(dateTime);
 
@@ -44,13 +45,13 @@ const dateTimeGenerator = {
     return dateTimeList;
   },
 
-  year: () => {
+  year: (rowCount) => {
     const yearList = [];
 
     for(let i = 0; i < rowCount; i++){
 
       const dateTime = faker.date.between('1900-01-01T00:00:00.000Z', '2030-01-01T00:00:00.000Z');
-      const year = dateTime.slice(0, 4);
+      const year = dateTime.getFullYear();
       yearList.push(year);
 
     }
@@ -58,7 +59,7 @@ const dateTimeGenerator = {
     return yearList;
   },
 
-  timestamp: () => {
+  timestamp: (rowCount) => {
     const timeStampList = [];
 
     for(let i = 0; i < rowCount; i++){
