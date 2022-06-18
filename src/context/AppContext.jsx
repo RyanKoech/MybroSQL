@@ -83,6 +83,49 @@ const AppContextProvider = ({children}) => {
     });
   };
 
+  const createQuery = (rowCount, data) => {
+
+
+    let insertQuery  = `INSERT INTO \`${generalInfo.tableName}\` (`;
+
+    colNamesList.forEach((colName, index) => {
+      let colString = "";
+      if(index == 0){
+        colString = `\`${colName}\``;
+      }else {
+        colString = `, \`${colName}\``; 
+      }
+      console.log(colString);
+  
+      insertQuery = insertQuery.concat(colString);
+    });
+  
+    insertQuery = insertQuery.concat(") VALUES ");
+  
+    console.log("Query Header");
+    console.log(insertQuery);
+    
+    for (let i = 0; i < rowCount; i++){
+      let currentRowDataQuery = (i == 0) ? " (" : ", (";
+
+      colNamesList.forEach((colName, index) => {
+        const colData = data[colName][i];
+        const colDataQuery = (index == 0)? `'${colData}'` : `, '${colData}'`;
+
+        currentRowDataQuery = currentRowDataQuery.concat(colDataQuery);
+      });
+
+      currentRowDataQuery = currentRowDataQuery.concat(" )");
+      insertQuery = insertQuery.concat(currentRowDataQuery);
+    }
+    
+    insertQuery = insertQuery.concat(";");
+  
+    console.log("Final Query");
+    console.log(insertQuery);
+    
+  }
+
   //Called to begin the process of data generation
   const generateData = () => {
 
@@ -195,6 +238,8 @@ const AppContextProvider = ({children}) => {
     console.log(colObjList);
     console.log("Data: ")
     console.log(data)
+
+    createQuery(rowCount, data);
   }
 
 
