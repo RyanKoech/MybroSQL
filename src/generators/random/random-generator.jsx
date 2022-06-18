@@ -121,7 +121,7 @@ const randomGenerator = {
         let regen = true;
         while(regen){
 
-          sentence = faker.random.sentence();
+          sentence = faker.lorem.sentence();
           //Ensures generated sentence is unique
           regen = sentenceList.includes(sentence);
 
@@ -134,7 +134,7 @@ const randomGenerator = {
       
       for(let i = 0; i < rowCount; i++){
 
-        const sentence = faker.random.sentence();
+        const sentence = faker.lorem.sentence();
         sentenceList.push(sentence)
   
       }
@@ -155,7 +155,7 @@ const randomGenerator = {
         let regen = true;
         while(regen){
 
-          paragraphs = faker.random.paragraphs();
+          paragraphs = faker.lorem.paragraphs();
           //Ensures generated paragraphs is unique
           regen = paragraphsList.includes(paragraphs);
 
@@ -168,7 +168,7 @@ const randomGenerator = {
       
       for(let i = 0; i < rowCount; i++){
 
-        const paragraphs = faker.random.paragraphs();
+        const paragraphs = faker.lorem.paragraphs();
         paragraphsList.push(paragraphs)
   
       }

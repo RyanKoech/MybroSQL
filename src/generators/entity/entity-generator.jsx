@@ -14,7 +14,7 @@ const entityGenerator = {
         let regen = true;
         while(regen){
 
-          company = faker.random.companyName();
+          company = faker.company.companyName();
           //Ensures generated company is unique
           regen = companyList.includes(company);
 
@@ -27,7 +27,7 @@ const entityGenerator = {
       
       for(let i = 0; i < rowCount; i++){
 
-        const company = faker.random.companyName();
+        const company = faker.company.companyName();
         companyList.push(company)
   
       }
