@@ -1,11 +1,23 @@
+//React Imports
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+
+//External Libraries Imports
 import 'flowbite';
+
+//Components Imports
+import App from './App'
+
+//App Context
+import AppContextProvider from './context/AppContext';
+
+//Styles Imports
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <AppContextProvider>
+      <App />
+    </AppContextProvider>
   </React.StrictMode>
 )
