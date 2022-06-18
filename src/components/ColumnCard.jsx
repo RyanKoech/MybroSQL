@@ -259,7 +259,7 @@ const ColumnCard = React.memo(({ colName }) => {
               Custom Data
             </label>
             <span
-              className="block"
+              className="block cursor-pointer"
               title="Enter comma ( , ) separated data to be used for your foreign keys or custom data. NOTE: Datatype and Data domain will be ignored if set"
             >
               <svg
