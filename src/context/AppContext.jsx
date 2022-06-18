@@ -83,7 +83,7 @@ const AppContextProvider = ({children}) => {
     });
   };
 
-  const createQuery = (rowCount, data) => {
+  const prepareQuery = (rowCount, data) => {
 
 
     let insertQuery  = `INSERT INTO \`${generalInfo.tableName}\` (`;
@@ -239,7 +239,7 @@ const AppContextProvider = ({children}) => {
     console.log("Data: ")
     console.log(data)
 
-    createQuery(rowCount, data);
+    prepareQuery(rowCount, data);
   }
 
 
