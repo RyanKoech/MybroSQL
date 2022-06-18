@@ -65,3 +65,6 @@ export const DATA_DOMAINS = {
       TIMESTAMP
     ]
 }
+
+//Define max number of tries a loop will try to find a unique data
+export const MAX_TRIES = 10;
