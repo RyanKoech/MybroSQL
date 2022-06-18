@@ -1,4 +1,8 @@
+//External Libraries Imports
 import { faker } from "@faker-js/faker";
+
+//Constants Imports
+import { MAX_TRIES } from "../../model/Constants";
 
 const randomGenerator = {
   password : (rowCount) => {
@@ -21,11 +25,13 @@ const randomGenerator = {
     if(isUnique){
       for (let i = 0; i < rowCount; i++){
         let randomNumber = 0;
+        let maxTries = MAX_TRIES;
         let regen = true;
-        while(regen){
+        while(regen && maxTries > 0){
           randomNumber = Math.floor(Math.random() * (size+1));
           //Keeps generating until a unique random number is obtained
           regen = randomNumberList.includes(randomNumber);
+          maxTries--;
         }
         randomNumberList.push(randomNumber);
       }
@@ -50,12 +56,14 @@ const randomGenerator = {
       for(let i = 0; i < rowCount; i++){
 
         let word = "";
+        let maxTries = MAX_TRIES;
         let regen = true;
-        while(regen){
+        while(regen && maxTries > 0){
 
           word = faker.random.word();
           //Ensures generated word is unique
           regen = wordList.includes(word);
+          maxTries--;
 
         }
 
@@ -84,12 +92,14 @@ const randomGenerator = {
       for(let i = 0; i < rowCount; i++){
 
         let letter = "";
+        let maxTries = MAX_TRIES;
         let regen = true;
-        while(regen){
+        while(regen && maxTries > 0){
 
           letter = faker.random.alpha();
           //Ensures generated letter is unique
           regen = letterList.includes(letter);
+          maxTries--;
 
         }
 
@@ -118,12 +128,14 @@ const randomGenerator = {
       for(let i = 0; i < rowCount; i++){
 
         let sentence = "";
+        let maxTries = MAX_TRIES;
         let regen = true;
-        while(regen){
+        while(regen && maxTries > 0){
 
           sentence = faker.lorem.sentence();
           //Ensures generated sentence is unique
           regen = sentenceList.includes(sentence);
+          maxTries--;
 
         }
 
@@ -152,12 +164,14 @@ const randomGenerator = {
       for(let i = 0; i < rowCount; i++){
 
         let paragraphs = "";
+        let maxTries = MAX_TRIES;
         let regen = true;
-        while(regen){
+        while(regen && maxTries > MAX_TRIES){
 
           paragraphs = faker.lorem.paragraphs();
           //Ensures generated paragraphs is unique
           regen = paragraphsList.includes(paragraphs);
+          maxTries--;
 
         }
 
