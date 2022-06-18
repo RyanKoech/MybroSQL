@@ -127,15 +127,15 @@ const AppContextProvider = ({children}) => {
             break;
           }
           case CITY: {
-            data[colObj.name] = addressGenerator.city(rowCount);
+            data[colObj.name] = addressGenerator.city(rowCount, colObj.isUnique);
             break;
           }
           case COUNTRY: {
-            data[colObj.name] = addressGenerator.country(rowCount);
+            data[colObj.name] = addressGenerator.country(rowCount, colObj.isUnique);
             break;
           }
           case STATE: {
-            data[colObj.name] = addressGenerator.state(rowCount);
+            data[colObj.name] = addressGenerator.state(rowCount, colObj.isUnique);
             break;
           }
           case RANDOM_NUMBER: {
@@ -147,7 +147,7 @@ const AppContextProvider = ({children}) => {
             break;
           }
           case ADDRESS:{
-            data[colObj.name] = addressGenerator.address(rowCount);
+            data[colObj.name] = addressGenerator.address(rowCount, colObj.isUnique);
             break;
           }
           case EMAIL:{
