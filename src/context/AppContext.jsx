@@ -89,12 +89,7 @@ const AppContextProvider = ({children}) => {
     let insertQuery  = `INSERT INTO \`${generalInfo.tableName}\` (`;
 
     colNamesList.forEach((colName, index) => {
-      let colString = "";
-      if(index == 0){
-        colString = `\`${colName}\``;
-      }else {
-        colString = `, \`${colName}\``; 
-      }
+      let colString = (index == 0)? `\`${colName}\`` : `, \`${colName}\``;
       console.log(colString);
   
       insertQuery = insertQuery.concat(colString);
