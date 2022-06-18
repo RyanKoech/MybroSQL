@@ -1,4 +1,8 @@
+//External Libraries Imports
 import { faker } from "@faker-js/faker";
+
+//Constants Imports
+import { MAX_TRIES } from "../../model/Constants";
 
 const entityGenerator = {
 
@@ -11,12 +15,14 @@ const entityGenerator = {
       for(let i = 0; i < rowCount; i++){
 
         let company = "";
+        let maxTries = MAX_TRIES;
         let regen = true;
-        while(regen){
+        while(regen && maxTries > 0){
 
           company = faker.company.companyName();
           //Ensures generated company is unique
           regen = companyList.includes(company);
+          maxTries--;
 
         }
 
