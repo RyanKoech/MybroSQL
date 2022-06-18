@@ -75,7 +75,7 @@ const addressGenerator = {
 
         while(regen){
 
-          postalCode = faker.address.zipCode();
+          postalCode = faker.address.zipCode('#####-#####');
           regen = postalCodeList.includes(postalCode);
 
         }
@@ -87,7 +87,7 @@ const addressGenerator = {
 
       for(let i = 0; i < rowCount; i++){
   
-        const postalCode = faker.address.zipCode();
+        const postalCode = faker.address.zipCode('#####-#####');
         postalCodeList.push(postalCode);
 
       }
