@@ -49,6 +49,15 @@ const AppContextProvider = ({children}) => {
   const [preparedQuery , setPreparedQuery] = useState("No Prepared Query Yet");
   const [showResults, setShowResults ] = useState(false);
 
+  const resetAppState = () => {
+    setEnteredCol("");
+    setColNamesList((prevList) => []);
+    setColObjList((prevList) => []);
+    setGeneralInfo((prevObj) => {return {}});
+    setPreparedQuery("No Prepared Query Yet");
+    setShowResults(false);
+  }
+
   //Keeps track of columns added in the UI
   const addNewColName = useCallback(
     (e) => {
@@ -242,7 +251,7 @@ const AppContextProvider = ({children}) => {
 
 
   return (
-    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, updateColObjList, setGeneralInfo, generateData, preparedQuery, showResults, setShowResults}}>
+    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, updateColObjList, setGeneralInfo, generateData, preparedQuery, showResults, setShowResults, resetAppState}}>
       {children}
     </AppContext.Provider>
   );
