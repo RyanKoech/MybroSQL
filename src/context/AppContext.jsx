@@ -120,7 +120,8 @@ const AppContextProvider = ({children}) => {
   
     console.log("Final Query");
     console.log(insertQuery);
-    
+    setPreparedQuery(insertQuery);
+    setShowResults(true);
   }
 
   //Called to begin the process of data generation
@@ -241,7 +242,7 @@ const AppContextProvider = ({children}) => {
 
 
   return (
-    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, updateColObjList, setGeneralInfo, generateData, preparedQuery, showResults}}>
+    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, updateColObjList, setGeneralInfo, generateData, preparedQuery, showResults, setShowResults}}>
       {children}
     </AppContext.Provider>
   );
