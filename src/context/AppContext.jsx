@@ -75,6 +75,15 @@ const AppContextProvider = ({children}) => {
     [colNamesList, enteredCol]
   );
 
+  const removeCol = (colName) => {
+     setColNamesList(prevColList => prevColList.filter((prevColName) => {
+      return prevColName != colName;
+     }));
+     setColObjList(prevColObjList => prevColObjList.filter(preColObj => {
+      return preColObj.name != colName;
+     }));
+  }
+
   //Keeps track of details of columns add to the UI
   const updateColObjList = (newObj) => {
 
@@ -251,7 +260,7 @@ const AppContextProvider = ({children}) => {
 
 
   return (
-    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, updateColObjList, setGeneralInfo, generateData, preparedQuery, showResults, setShowResults, resetAppState}}>
+    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, removeCol, updateColObjList, setGeneralInfo, generateData, preparedQuery, showResults, setShowResults, resetAppState}}>
       {children}
     </AppContext.Provider>
   );

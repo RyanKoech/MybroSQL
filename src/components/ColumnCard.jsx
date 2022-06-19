@@ -11,7 +11,7 @@ import ColumnObject from "../model/ColumnObject";
 import { DATA_TYPE, DATA_DOMAINS } from "../model/Constants";
 
 const ColumnCard = React.memo(({ colName }) => {
-  const { updateColObjList } = useContext(AppContext);
+  const { updateColObjList, removeCol } = useContext(AppContext);
 
   //Information for Generating Column Data
   const [isForeignKey, setIsForeignKey] = useState(false);
@@ -64,7 +64,10 @@ const ColumnCard = React.memo(({ colName }) => {
             &nbsp;:&nbsp;{colName}
           </span>
         </div>
-        <button className="block p-1 text-gray-500 sm:text-gray-300 dark:text-slate-400 sm:dark:text-slate-600 hover:text-gray-600 dark:hover:text-slate-300">
+        <button className="block p-1 text-gray-500 sm:text-gray-300 dark:text-slate-400 sm:dark:text-slate-600 hover:text-gray-600 dark:hover:text-slate-300" onClick={(e) => {
+          e.preventDefault();
+          removeCol(colName);
+          }}>
           <svg
             className="w-6 h-6"
             fill="none"
