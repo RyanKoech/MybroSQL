@@ -1,6 +1,8 @@
 //React Imports
 import React, { useState } from "react";
 
+import logo from '../resources/images/logo.png';
+
 const Navbar = React.memo(() => {
   
   //Check initial dark mode setting
@@ -87,6 +89,7 @@ const Navbar = React.memo(() => {
           className="flex items-center"
           target="_blank"
         >
+          <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
           <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white ml-3 md:ml-0">
             MybroSQL
           </span>
@@ -99,7 +102,7 @@ const Navbar = React.memo(() => {
             onClick={toggleMode}
           > {darkMode ? lightModeIcon() : darkModeIcon()} </button>
           <a
-            href="https://github.com/RyanKoech/MybroSQL"
+            href="https://www.buymeacoffee.com/RyanKoech"
             type="button"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             target="_blank"
