@@ -89,8 +89,8 @@ const Navbar = React.memo(() => {
           className="flex items-center"
           target="_blank"
         >
-          <img src={logo} className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white ml-3 md:ml-0">
+          <img src={logo} className="mr-0 sm:mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white ml-1 md:ml-0">
             MybroSQL
           </span>
         </a>
@@ -98,13 +98,13 @@ const Navbar = React.memo(() => {
           <button
             id="theme-toggle"
             type="button"
-            className="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-2 md:mr-5"
+            className="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1 md:mr-5"
             onClick={toggleMode}
           > {darkMode ? lightModeIcon() : darkModeIcon()} </button>
           <a
             href="https://www.buymeacoffee.com/RyanKoech"
             type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-1 sm:mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             target="_blank"
           >
             Buy Me Coffee
@@ -156,6 +156,16 @@ const Navbar = React.memo(() => {
                 title="Open repo a new tab"
               >
                 Visit Repo
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/RyanKoech/MybroSQL/discussions"
+                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                target="_blank"
+                title="Open repo a new tab"
+              >
+                Issues
               </a>
             </li>
           </ul>
