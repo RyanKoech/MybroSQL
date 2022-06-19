@@ -1,5 +1,5 @@
 //React Imports
-import React, { useCallback, useContext, useState } from "react";
+import React, { useCallback, useContext, useState, useRef } from "react";
 
 //Components Imports
 import ColumnCard from "./ColumnCard";
@@ -9,7 +9,16 @@ import { AppContext } from "../context/AppContext";
 
 const MainApp = React.memo(() => {
 
-  const {colNamesList, enteredCol, setEnteredCol, addNewColName, setGeneralInfo, generateData} = useContext(AppContext);
+  const {colNamesList, enteredCol, setEnteredCol, addNewColName, setGeneralInfo, generateData, resetAppState} = useContext(AppContext);
+
+  const tableNameInputRef = useRef();
+  const rowCountInputRef = useRef();
+
+  const handleOnClickReset = () => {
+    tableNameInputRef.current.value = "";
+    rowCountInputRef.current.value = "";
+    resetAppState();
+  }
 
   return (
     <div className="px-2 pt-3 md:pt-20">
@@ -26,6 +35,7 @@ const MainApp = React.memo(() => {
         <input
           type="text"
           id="tableName"
+          ref={tableNameInputRef}
           className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full sm:w-3/12 min-w-[300px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
           placeholder="Enter SQL table name"
           required
@@ -48,6 +58,7 @@ const MainApp = React.memo(() => {
           min="1"
           max="100"
           id="tableName"
+          ref={rowCountInputRef}
           className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full sm:w-3/12 min-w-[300px] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
           placeholder="Enter number of rows needed"
           required
@@ -58,9 +69,18 @@ const MainApp = React.memo(() => {
         />
       </div>
       <div>
-        <h2 className="text-xl sm:text-2xl text-gray-800 font-semibold dark:text-slate-300 mb-3 sm:mb-5">
-          Table Columns
-        </h2>
+        <div className="flex flex-row justify-between items-center mb-3 sm:mb-5">
+          <h2 className="block text-xl sm:text-2xl text-gray-800 font-semibold dark:text-slate-300">
+            Table Columns
+          </h2>
+          <button
+            type="button"
+            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            onClick={handleOnClickReset}
+          >
+            Reset
+          </button>
+        </div>
         {colNamesList.length > 0 ? (
           colNamesList.map((colName) => (
             <ColumnCard key={colName} colName={colName} />
