@@ -1,8 +1,20 @@
 //React Imports
-import React from "react";
+import React , {useContext, useState} from "react";
+//External Libraries Imports
 import CopyToClipboard from "react-copy-to-clipboard";
 
+//App Context Imports
+import { AppContext } from "../context/AppContext";
+
 const Result = () => {
+
+  const {preparedQuery, setShowResults} = useContext(AppContext);
+
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    setCopied(true);
+  };
+
   return (
     <div className="px-2 pt-3 md:pt-20 h-max">
       <div className="mb-5 md:mb-8">
@@ -41,31 +53,29 @@ const Result = () => {
             </svg>
           </span>
         </div>
-        <textarea
+        <pre 
           id="message"
           rows="4"
-          className="block p-2.5 w-full h-[50vh] sm:h-[30vh] min-h-[200px] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
+          className="block p-2.5 w-full h-[50vh] sm:h-[35vh] min-h-[200px] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white overflow-x-auto whitespace-pre-wrap break-words"
           placeholder="Your message..."
-          disabled
-          readOnly
-          value="Testing"
-        ></textarea>
+        >{preparedQuery}</pre>
         <div className="flex flex-row justify-between mt-4">
           <CopyToClipboard
-            onCopy={() => {}}
-            text={"Testing Copy To Clip Board"}
-            className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            onCopy={handleCopy}
+            text={preparedQuery}
+            className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 min-w-[149px]"
             type="button"
           >
             <button
               type="button"
             >
-              {false ? "Copied" : "Copy to clipboard"}
+              {copied ? "Copied" : "Copy to clipboard"}
             </button>
           </CopyToClipboard>
           <button
             type="button"
             className="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-[149px]"
+            onClick={()=> {setShowResults(false)}}
           >
             Go Back
           </button>
