@@ -67,7 +67,7 @@ const AppContextProvider = ({children}) => {
         return;
 
       setColNamesList((prevColList) => [...prevColList, enteredCol]);
-      setColObjList((prevColObjList) => [...prevColObjList, ColumnObject(enteredCol, false, false, 120, "TEXT", "NAME", "")])
+      setColObjList((prevColObjList) => [...prevColObjList, ColumnObject(enteredCol, false, false, 0, "TEXT", "NAME", "")])
 
       console.log(colObjList);
       setEnteredCol('');
@@ -260,7 +260,7 @@ const AppContextProvider = ({children}) => {
 
 
   return (
-    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, removeCol, updateColObjList, setGeneralInfo, generateData, preparedQuery, showResults, setShowResults, resetAppState}}>
+    <AppContext.Provider value={{colNamesList, enteredCol, setEnteredCol, addNewColName, removeCol, updateColObjList, colObjList,setGeneralInfo, generateData, preparedQuery, showResults, setShowResults, resetAppState}}>
       {children}
     </AppContext.Provider>
   );

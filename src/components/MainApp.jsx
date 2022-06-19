@@ -82,8 +82,8 @@ const MainApp = React.memo(() => {
           </button>
         </div>
         {colNamesList.length > 0 ? (
-          colNamesList.map((colName) => (
-            <ColumnCard key={colName} colName={colName} />
+          colNamesList.map((colName, index) => (
+            <ColumnCard key={colName} colName={colName} colIndex={index}/>
           ))
         ) : (
           <div className="mx-auto text-center text-bold text-2xl text-slate-500 bg-slate-50 dark:bg-slate-800 p-2 rounded-lg mb-3">

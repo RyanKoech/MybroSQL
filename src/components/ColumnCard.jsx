@@ -10,16 +10,17 @@ import ColumnObject from "../model/ColumnObject";
 //Constants Imports
 import { DATA_TYPE, DATA_DOMAINS } from "../model/Constants";
 
-const ColumnCard = React.memo(({ colName }) => {
-  const { updateColObjList, removeCol } = useContext(AppContext);
+const ColumnCard = React.memo(({ colName, colIndex }) => {
+  
+  const { updateColObjList, removeCol, colObjList } = useContext(AppContext);
 
   //Information for Generating Column Data
-  const [isForeignKey, setIsForeignKey] = useState(false);
-  const [isUnique, setIsUnique] = useState(false);
-  const [size, setSize] = useState(0);
-  const [datatype, setDatatype] = useState(DATA_TYPE.TEXT);
-  const [dataDomain, setDataDomain] = useState(DATA_DOMAINS[DATA_TYPE.TEXT][0]);
-  const [customData, setCustomData] = useState("");
+  const [isForeignKey, setIsForeignKey] = useState(colObjList[colIndex].isForeignKey);
+  const [isUnique, setIsUnique] = useState(colObjList[colIndex].isUnique);
+  const [size, setSize] = useState(colObjList[colIndex].size);
+  const [datatype, setDatatype] = useState(colObjList[colIndex].datatype);
+  const [dataDomain, setDataDomain] = useState(colObjList[colIndex].dataDomain);
+  const [customData, setCustomData] = useState(colObjList[colIndex].customData);
 
   //Loops through DATA_TYPE constant to create options elements list for a select input
   const getDataTypeOptions = () => {
@@ -94,6 +95,7 @@ const ColumnCard = React.memo(({ colName }) => {
             <input
               type="checkbox"
               value=""
+              defaultChecked={isForeignKey}
               id={colName + "_foreignKey"}
               className="sr-only peer"
               onClick={(e) => {
@@ -127,6 +129,7 @@ const ColumnCard = React.memo(({ colName }) => {
             <input
               type="checkbox"
               value=""
+              defaultChecked={isUnique}
               id={colName + "_uniqueKey"}
               className="sr-only peer"
               onClick={(e) => {
@@ -164,6 +167,7 @@ const ColumnCard = React.memo(({ colName }) => {
             id="size"
             step="1"
             min="0"
+            value={size}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-9/12 p-2.5 ml-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required
             onChange={(e) => {
@@ -199,6 +203,7 @@ const ColumnCard = React.memo(({ colName }) => {
             <select
               id="countries"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              defaultValue={datatype}
               onChange={(e) => {
                 const _datatype = e.target.value;
                 //Update data domain since change in datatype implies change in data domain
@@ -232,6 +237,7 @@ const ColumnCard = React.memo(({ colName }) => {
             <select
               id="countries"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pr-8 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              defaultValue={dataDomain}
               onChange={(e) => {
                 const _dataDomain = e.target.value;
                 updateColObjList(
