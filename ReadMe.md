@@ -16,8 +16,9 @@
 
 # 👍MyBroSQL
 
-> An application for users to generate realistic dummy data for their MySQL databases. See the deployed application (here)[https://mybrosql.netlify.app/]
+> An application for users to generate realistic dummy data for their MySQL databases.
 
+**See the deployed application (here)[https://mybrosql.netlify.app/]**
 
 ## Built With
 
