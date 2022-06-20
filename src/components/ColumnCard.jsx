@@ -283,10 +283,10 @@ const ColumnCard = React.memo(({ colName, colIndex }) => {
         </div>
       ) : (
         <div className="mt-3">
-          <div className="mb-2 flex flex-row items-end">
+          <div className="mb-2 flex flex-row items-center">
             <label
               htmlFor="message"
-              className="block text-sm font-medium text-gray-900 dark:text-gray-400 mr-2"
+              className="block text-sm font-medium text-gray-900 dark:text-gray-400 mr-1"
             >
               Custom Data
             </label>
