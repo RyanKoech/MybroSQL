@@ -145,6 +145,8 @@ const AppContextProvider = ({children}) => {
   //Called to begin the process of data generation
   const generateData = () => {
 
+    if (!colObjList.length) return;
+
     const data = {}
     console.log(generalInfo.rowCount);
     const rowCount = (generalInfo.rowCount < 1 || generalInfo.rowCount > 200 || typeof(generalInfo.rowCount) == "undefined" || generalInfo.rowCount == null) ? 10 : generalInfo.rowCount;
