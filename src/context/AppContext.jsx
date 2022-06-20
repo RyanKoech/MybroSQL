@@ -147,7 +147,7 @@ const AppContextProvider = ({children}) => {
 
     const data = {}
     console.log(generalInfo.rowCount);
-    const rowCount = (generalInfo.rowCount < 1 || typeof(generalInfo.rowCount) == "undefined" || generalInfo.rowCount == null) ? 10 : generalInfo.rowCount;
+    const rowCount = (generalInfo.rowCount < 1 || generalInfo.rowCount > 200 || typeof(generalInfo.rowCount) == "undefined" || generalInfo.rowCount == null) ? 10 : generalInfo.rowCount;
 
     colObjList.forEach((colObj) => {
 
