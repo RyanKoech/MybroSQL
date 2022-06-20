@@ -8,7 +8,7 @@ import { AppContext } from "../context/AppContext";
 import ColumnObject from "../model/ColumnObject";
 
 //Constants Imports
-import { DATA_TYPE, DATA_DOMAINS } from "../model/Constants";
+import { DATA_TYPE, DATA_DOMAINS, RANDOM_NUMBER } from "../model/Constants";
 
 const ColumnCard = React.memo(({ colName, colIndex }) => {
   
@@ -87,7 +87,7 @@ const ColumnCard = React.memo(({ colName, colIndex }) => {
       </div>
       <div className="flex flex-col sm:flex-row sm:items-end my-4 max-w-[800px]">
         {/* FOREIGN KEY TOGGLE*/}
-        <div className="w-full">
+        <div className="w-full md:max-w-[200px] sm:mt-3">
           <label
             htmlFor={colName + "_foreignKey"}
             className="relative inline-flex items-center mb-4 sm:mb-0 cursor-pointer"
@@ -121,7 +121,7 @@ const ColumnCard = React.memo(({ colName, colIndex }) => {
           </label>
         </div>
         {/* UNIQUE KEY TOGGLE */}
-        <div className="w-full">
+        <div className="w-full md:max-w-[200px] sm:mt-3">
           <label
             htmlFor={colName + "_uniqueKey"}
             className="relative inline-flex items-center mb-4 sm:mb-0 cursor-pointer"
@@ -150,43 +150,66 @@ const ColumnCard = React.memo(({ colName, colIndex }) => {
             />
             <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
             <span className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
-              Unique
+              Unique&nbsp;
+            </span>
+            <span
+              className="inline cursor-pointer"
+              title="Use this both for the PRIMARY KEY and UNIQUE KEY attributes."
+            >
+              <svg
+                className="w-4 h-4 text-gray-600 dark:text-slate-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
             </span>
           </label>
         </div>
         {/* SIZE INPUT  */}
-        <div className="w-full">
-          <label
-            htmlFor="size"
-            className="inline-block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
-            Size
-          </label>
-          <input
-            type="number"
-            id="size"
-            step="1"
-            min="0"
-            value={size}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-9/12 p-2.5 ml-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            required
-            onChange={(e) => {
-              const _size = e.target.value;
-              updateColObjList(
-                ColumnObject(
-                  colName,
-                  isForeignKey,
-                  isUnique,
-                  _size,
-                  datatype,
-                  dataDomain,
-                  customData
-                )
-              );
-              setSize(_size);
-            }}
-          />
-        </div>
+        {dataDomain == RANDOM_NUMBER ? (
+          <div className="w-full">
+            <label
+              htmlFor="size"
+              className="inline-block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Max
+            </label>
+            <input
+              type="number"
+              id="size"
+              step="1"
+              min="0"
+              value={size}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-9/12 p-2.5 ml-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
+              onChange={(e) => {
+                const _size = e.target.value;
+                updateColObjList(
+                  ColumnObject(
+                    colName,
+                    isForeignKey,
+                    isUnique,
+                    _size,
+                    datatype,
+                    dataDomain,
+                    customData
+                  )
+                );
+                setSize(_size);
+              }}
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <h3 className="inline font-semibold text-lg sm:text-xl text-gray-800 dark:text-slate-300 mb-3">
         Date Details
@@ -260,16 +283,16 @@ const ColumnCard = React.memo(({ colName, colIndex }) => {
         </div>
       ) : (
         <div className="mt-3">
-          <div className="mb-2 flex flex-row items-end">
+          <div className="mb-2 flex flex-row items-center">
             <label
               htmlFor="message"
-              className="block text-sm font-medium text-gray-900 dark:text-gray-400 mr-2"
+              className="block text-sm font-medium text-gray-900 dark:text-gray-400 mr-1"
             >
               Custom Data
             </label>
             <span
               className="block cursor-pointer"
-              title="Enter comma ( , ) separated data to be used for your foreign keys or custom data. NOTE: Datatype and Data domain will be ignored if set"
+              title="Enter comma ( , ) separated data to be used for your foreign keys or your own custom data. NOTE: Datatype and Data domain will be ignored if set. Get all the primary keys from the parent table using the query: 'SELECT GROUP_CONCAT(<primary_key>) FROM <parent_table>;' and paste the results here."
             >
               <svg
                 className="w-4 h-4 text-gray-600 dark:text-slate-400"
@@ -290,7 +313,7 @@ const ColumnCard = React.memo(({ colName, colIndex }) => {
           <textarea
             id="message"
             rows="4"
-            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
             placeholder="Your custom data..."
             onChange={(e) => {
               const _customData = e.target.value;
