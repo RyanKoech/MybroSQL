@@ -25,6 +25,9 @@ const MainApp = React.memo(() => {
       <h1 className="text-3xl sm:text-4xl font-semibold dark:text-slate-100 mb-3">
         Lets Get Started!
       </h1>
+      <p className="mb-4 text-base text-gray-600 dark:text-gray-400">
+        An application for you to generate realistic dummy data for that MySQL database serving your school project. Go ahead! 💪 And don't forget to report any 🐛.
+      </p>
       <div className="mb-6">
         <label
           htmlFor="tableName"
