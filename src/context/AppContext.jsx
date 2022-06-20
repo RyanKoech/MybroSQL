@@ -69,7 +69,6 @@ const AppContextProvider = ({children}) => {
       setColNamesList((prevColList) => [...prevColList, enteredCol]);
       setColObjList((prevColObjList) => [...prevColObjList, ColumnObject(enteredCol, false, false, 0, "TEXT", "NAME", "")])
 
-      console.log(colObjList);
       setEnteredCol('');
     },
     [colNamesList, enteredCol]
@@ -98,7 +97,6 @@ const AppContextProvider = ({children}) => {
           return obj;
         });
         
-        console.log(newColObjList);
         return newColObjList;
     });
   };
@@ -110,15 +108,12 @@ const AppContextProvider = ({children}) => {
 
     colNamesList.forEach((colName, index) => {
       let colString = (index == 0)? `\`${colName}\`` : `, \`${colName}\``;
-      console.log(colString);
   
       insertQuery = insertQuery.concat(colString);
     });
   
     insertQuery = insertQuery.concat(") VALUES ");
   
-    console.log("Query Header");
-    console.log(insertQuery);
     
     for (let i = 0; i < rowCount; i++){
       let currentRowDataQuery = (i == 0) ? " (" : ", (";
@@ -136,8 +131,6 @@ const AppContextProvider = ({children}) => {
     
     insertQuery = insertQuery.concat(";");
   
-    console.log("Final Query");
-    console.log(insertQuery);
     setPreparedQuery(insertQuery);
     setShowResults(true);
   }
@@ -148,7 +141,6 @@ const AppContextProvider = ({children}) => {
     if (!colObjList.length) return;
 
     const data = {}
-    console.log(generalInfo.rowCount);
     const rowCount = (generalInfo.rowCount < 1 || generalInfo.rowCount > 200 || typeof(generalInfo.rowCount) == "undefined" || generalInfo.rowCount == null) ? 10 : generalInfo.rowCount;
 
     colObjList.forEach((colObj) => {
@@ -251,13 +243,6 @@ const AppContextProvider = ({children}) => {
         }
       }
     })
-    console.log("General information: ")
-    console.log(generalInfo);
-    console.log("Column Info: ")
-    console.log(colObjList);
-    console.log("Data: ")
-    console.log(data)
-
     prepareQuery(rowCount, data);
   }
 
